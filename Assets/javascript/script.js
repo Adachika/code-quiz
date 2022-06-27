@@ -65,9 +65,42 @@ var questions = [
     }, 1000);
   }
   
+  // Function to display questions
 
+function showQuestions() {
+    for (var i = 0; i < questions.length; i++) {
+        var c = questions[currentIndex].options;
+        var q = questions[currentIndex].ask;
+        option1.innerHTML = c[0];
+        option2.innerHTML = c[1];
+        option3.innerHTML = c[2];
+        option4.innerHTML = c[3];
+        question.innerHTML = q;
+    }
+}
+ 
+// Function to check the answer
+function checkAnswer(answer) {
+    if (questions[currentIndex].answer == answer) {
+        alert("correct");
+        correct++;
+        nextQuestion();
+    }
+    else {
+        alert("incorrect");
+        incorrect++;
+        timeLeft = timeLeft - 10;
+        nextQuestion();
+    }
+}
+ 
+// Function to display the next question
+function nextQuestion(){
+    currentIndex++;
+    showQuestions();
     
-  
+}
+
   
   start.addEventListener("click",function() {
 
