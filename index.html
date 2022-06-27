@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Timed quiz</title>
+    <link rel="stylesheet" href="./Assets/css/style.css" />
+  </head>
+  <body>
+
+      <header>
+        <h1>Javascript Multiple Choice Quiz </h1>
+      </header>
+      <div>
+        <h2 class="highscore" style="text-align:left">View Highscores</h2>
+        <h2 class ="time" style="text-align:right">Time:</h2>
+      </div>
+    <div class="container">
+        <div id="question"></div>
+    <div id ="quiz">
+        <button id="start" class="btn">Start Quiz</button>
+        <p id="option1" onclick="checkAnswer('option1')"></p>
+        <p id="option2" onclick="checkAnswer('option2')"></p>
+        <p id="option3" onclick="checkAnswer('option3')"></p>
+        <p id="option4" onclick="checkAnswer('option4')"></p>
+    </div>
+    </div>
+
+    <script src="./Assets/javascript/script.js"></script>
+  </body>
+</html>
