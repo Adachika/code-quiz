@@ -1,26 +1,55 @@
-var timeEl = document.querySelector(".time");
-var beginGame = document.querySelector("#start");
-var secondsLeft = 30;
-var questions = [
-    {
-    q1: "commonly used data types do not include:",
-    options1: ["strings", "boolean","alerts", "numbers"],
-    answer1: options1[2],
-  }, {
-      q2: "html syntax include:",
-      option2: ["h1 tag","bananas", "h2 tag", "form"],
-  
-  } ];
-console.log(questions);
+// Declare variables
 
-questions[0].q1
- if (answer=== questions[0].answer1) {
-    alert("correct")
- }else {
-    alert("incorrect")
-    timer = timer-10;
- }
- beginGame.addEventListener("click",function() {
+var timeEl = document.querySelector(".time");
+var start = document.querySelector("#start");
+var highScore = document.querySelector(".highscore");
+var question = document.querySelector("#question");
+var quiz = document.querySelector("#quiz");
+var option1 = document.querySelector("#option1");
+var option2 = document.querySelector("#option2");
+var option3 = document.querySelector("#option3");
+var option4 = document.querySelector("#option4");
+var timeLeft = 60;
+var correct = 0;
+var incorrect = 0;
+var currentIndex = 0;
+
+// Use an array to create a question bank. Each question is an object within the array
+var questions = [
+    {        
+    ask: "Commonly used data types DO NOT include:",
+    options: ["strings", "booleans","alerts", "numbers"],
+    answer: 'option3'
+  },
+  {
+    ask: "Script tags go in:___",
+    options: ["title", "css","div", "body"],
+    answer: 'option4'
+  },
+  {
+    ask: "The condition in an if / else statement is enclosed within ____.",
+    options: ["quotes", "curly brackets", "parentheses", "square brackets"],
+      answer: 'option3'
+  },
+  {
+    ask: "Arrrays in Javascript can be used to store ___.",
+    options: ["numbers and strings","other arrays","booleans","all of the above"],
+    answer: 'option4'
+  },
+  {
+    ask: "String values must be enclosed within ___ when being assigned to variables. ",
+    options: ["commas","curly brackets","quotes","paraentheses"],
+    answer: 'option3'
+  },
+  {
+    ask: "A very useful tool used during development and debugging for printing content to the debugger is:",
+    options: ["Javascript","terminal/bash","for loops","console.log"],
+    answer: "option4"
+  }
+
+];
+
+ start.addEventListener("click",function() {
 
  }
  )
