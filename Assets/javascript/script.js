@@ -1,5 +1,4 @@
 // Declare variables
-
 var timeEl = document.querySelector(".time");
 var start = document.querySelector("#start");
 var highScore = document.querySelector(".highscore");
@@ -101,8 +100,56 @@ function nextQuestion(){
     
 }
 
-  
-  start.addEventListener("click",function() {
+// Function to display the results
+function results(){
+    var score = parseInt(correct) + parseInt(timeLeft);
+    question.innerHTML = "Final score: " + score;
+    question.style.fontSize = "30px";
+    quiz.innerHTML = "correct: " + correct + " " + "incorrect: " + incorrect;
+    quiz.style.fontSize = "20px";
+    quiz.style.color = "sienna";
 
+    var save = document.createElement("button");
+    save.innerHTML = "Submit";
+    quiz.append(save);
+
+    var initialsInput = document.createElement("input");
+    initialsInput.style.margin = "10px";
+    quiz.append(initialsInput);
+
+    save.addEventListener("click", function (event) {
+      event.preventDefault();
+
+    var highscore = JSON.parse(localStorage.getItem('highscore')) || [];
+    var userScore = {name: input.value, score: score };
+    highscore.length <= 5 && highscore.push(userScore);
+    if (highscore.length >= 5){
+       for (let i = 0; i < highscore.length; i++){
+        if (highscore[i].score < userScore.score){
+          highscore.splice(i, 1, userScore);
+          break;
+        }
+      }
+     }
+    localStorage.setItem('highscore', JSON.stringify(highscore));
+    highscore.map(i => {
+        if (highscore.length > 5){
+              highscore.splice(5);
+        }
+        var li = document.createElement("li");
+        li.innerHTML = i.name + " " + i.score;
+        return quiz.append(li);
+      }) 
+      input.style.visibility = "hidden";
+      save.style.visibility = "hidden";
+      timeEl.innerHTML = "Score Board";
+
+    });
 }
-)
+
+  
+start.addEventListener("click",function() {
+    setTime();
+    showQuestions();
+    start.getElementsByClassName.display = "none";
+})
