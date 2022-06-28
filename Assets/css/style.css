@@ -18,18 +18,13 @@ header {
     margin-bottom: 0;
 }
 
-.highscore {
-    color: purple;
-    margin-top: 30px;
+.time {
+    margin-right: 40px;
+    margin-top: 10px;
+
 }
 
 .time {
-    margin-right: 40px;
-    margin-top: -10px;
-
-}
-
-.highscore, .time {
     font-size: 14px;
 }
 

@@ -1,7 +1,6 @@
 // Declare variables
 var timeEl = document.querySelector(".time");
 var start = document.querySelector("#start");
-var highScore = document.querySelector(".highscore");
 var question = document.querySelector("#question");
 var quiz = document.querySelector("#quiz");
 var option1 = document.querySelector("#option1");
@@ -37,7 +36,7 @@ var questions = [
   },
   {
     ask: "String values must be enclosed within ___ when being assigned to variables. ",
-    options: ["commas","curly brackets","quotes","paraentheses"],
+    options: ["commas","curly brackets","quotes","parentheses"],
     answer: 'option3'
   },
   {
@@ -105,48 +104,50 @@ function results(){
     var score = parseInt(correct) + parseInt(timeLeft);
     question.innerHTML = "Final score: " + score;
     question.style.fontSize = "30px";
-    quiz.innerHTML = "correct: " + correct + " " + "incorrect: " + incorrect;
+    quiz.innerHTML = "correct: " + correct + " " + "incorrect: " + incorrect + " ";
     quiz.style.fontSize = "20px";
     quiz.style.color = "sienna";
 
-    var save = document.createElement("button");
-    save.innerHTML = "Submit";
-    quiz.append(save);
+    var submitBtn = document.createElement("button");
+    submitBtn.innerHTML = "Submit";
+    quiz.append(submitBtn);
 
     var initialsInput = document.createElement("input");
+    initialsInput.setAttribute("type","text");
+    initialsInput.setAttribute("value","Enter your initials");
     initialsInput.style.margin = "10px";
     quiz.append(initialsInput);
 
-    save.addEventListener("click", function (event) {
+    submitBtn.addEventListener("click", function (event) {
       event.preventDefault();
 
-    var highscore = JSON.parse(localStorage.getItem('highscore')) || [];
-    var userScore = {name: input.value, score: score };
-    highscore.length <= 5 && highscore.push(userScore);
-    if (highscore.length >= 5){
-       for (let i = 0; i < highscore.length; i++){
-        if (highscore[i].score < userScore.score){
-          highscore.splice(i, 1, userScore);
+    var highScore = JSON.parse(localStorage.getItem('highscore')) || [];
+    var userScore = {name: initialsInput.value, score: score };
+    highScore.length <= 5 && highScore.push(userScore);
+
+    if (highScore.length >= 5){
+       for (let i = 0; i < highScore.length; i++){
+        if (highScore[i].score < userScore.score){
+          highScore.splice(i, 1, userScore);
           break;
         }
       }
      }
-    localStorage.setItem('highscore', JSON.stringify(highscore));
-    highscore.map(i => {
-        if (highscore.length > 5){
-              highscore.splice(5);
+    localStorage.setItem('highscore', JSON.stringify(highScore));
+    highScore.map(i => {
+        if (highScore.length > 5){
+              highScore.splice(5);
         }
         var li = document.createElement("li");
         li.innerHTML = i.name + " " + i.score;
         return quiz.append(li);
       }) 
-      input.style.visibility = "hidden";
-      save.style.visibility = "hidden";
-      timeEl.innerHTML = "Score Board";
-
+      initialsInput.style.visibility = "hidden";
+      submitBtn.style.visibility = "hidden";
+      timeEl.innerHTML = "";
+      
     });
 }
-
   
 start.addEventListener("click",function() {
     setTime();
