@@ -36,5 +36,5 @@ function setTime() {
 - Local Storage
 
 ### Credits
-https://github.com/yyazdi13/multiplechoicequiz
+yyazdi13
 
